@@ -13,9 +13,9 @@ data = {
 # Create a DataFrame
 df = pd.DataFrame(data)
 
-# Create a map centered around Iran
+# Create map
 plt.figure(figsize=(12, 10))
-m = Basemap(projection='merc', llcrnrlat=25, urcrnrlat=40, llcrnrlon=44, urcrnrlon=63, resolution='i')
+m = Basemap(projection="merc", llcrnrlat=25, urcrnrlat=40, llcrnrlon=44, urcrnrlon=63, resolution='i')
 
 # Draw coastlines and country borders
 m.drawcoastlines()
@@ -23,9 +23,9 @@ m.drawcountries()
 
 # Plot each city
 for i in range(len(df)):
-    x, y = m(df['Longitude'][i], df['Latitude'][i])
-    m.plot(x, y, 'bo', markersize=df['Population'][i] / 1000000)
-    plt.text(x, y, f"{df['City'][i]}: {df['Population'][i]}", fontsize=12, ha='right')
+    x, y = m(df["Longitude"][i], df["Latitude"][i])
+    m.plot(x, y, "bo", markersize=df["Population"][i] / 1000000)
+    plt.text(x, y, f"{df['City'][i]}: {df["Population"][i]}", fontsize=12, ha="right")
 
-plt.title('Coordinates and Population of the 10 Most Important Cities in Iran')
+plt.title("Coordinates and Population of the 10 Most Important Cities in Iran")
 plt.show()
